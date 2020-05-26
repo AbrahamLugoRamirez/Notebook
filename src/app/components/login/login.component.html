@@ -1,1 +1,63 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center text-white font-weight-lighter">Bienvenido a Encuesta.com</h1>
+    <form class="form">
+        <h1 class="text-center text-secondary font-weight-lighter">Login</h1>
+        <div class="row mb-3 text-center">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                        checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        Empresa
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        Empleado
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="label">Correo electronico</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" id="email">
+        </div>
+        <div class="form-group">
+            <label class="label">Contraseña</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <a class="text-center d-block olvido" href="#" data-toggle="modal" data-target="#exampleModal">¿Olvido
+                    su contraseña?</a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content p-4">
+                            <h3 class ="text-center text-dark">Recuperar contraseña</h3>
+                            <label class="label ">Confirmar correo electronico</label>
+                            <input type="email" class="form-control " aria-describedby="emailHelp" id="email2">
+                            <button type="button" class="btn btn-primary mt-3" onclick="PasswordReset()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <a class="text-center d-block olvido" routerLink ="/registro">Registrarse</a>
+            </div>
+        </div>
+        <input type="button" value="Entrar" onclick="verificar()" class="btn-entrar text-center text-white border-0">
+    </form>
+  
+</body>
+</html>
