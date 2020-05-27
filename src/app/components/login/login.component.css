@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;    
-    background: linear-gradient(90deg, #2b5876, #3b74c0);
+    
 }
 
 .form {
@@ -17,7 +17,7 @@
     width: 360px;
     padding: 32px;
     border-radius: 5px;
-    box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px -1px 55px 0px rgba(181,206,255,1);
 }
 
 .form-control {

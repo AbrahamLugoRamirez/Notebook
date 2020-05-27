@@ -1,0 +1,20 @@
+.izq{
+
+    float: left;
+    
+    width: 50%;
+    height: 400px;
+    padding: 4%;
+   
+    }
+    .der{
+        float: right;
+    
+    width: 50%;
+    height: 400px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
