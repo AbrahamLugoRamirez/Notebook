@@ -4,12 +4,11 @@
 }
 
 
-body {
+.cont{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    height: 100vh;
+    flex-direction: column;    
     background: linear-gradient(90deg, #2b5876, #3b74c0);
 }
 
