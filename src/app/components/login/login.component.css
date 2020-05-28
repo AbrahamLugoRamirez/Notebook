@@ -3,14 +3,37 @@
     box-sizing: border-box;
 }
 
+izq{
+    float: left;
+    width: 50%;
+    height: auto;
+    padding: 4%;
+ }
 
+.der{
+    float: right;
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    background-image: url("../../../assets/imagenes/fondo2.jpg");  
+
+}
 .cont{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column; 
-    background-image: url("../../../assets/imagenes/fondo.jpg");   
-    
+    background-image: url("../../../assets/imagenes/fondo.jpg");       
 }
 
 .form {
