@@ -1,19 +1,18 @@
-
 <div id="container" class="container-fluid com animated fadeIn fast">
     <main id="sub-container" class="row">
-        <div class="col-md-6 izq left">
-         <img src="../../../assets/imagenes/userlogin.png">
+        <div class="col-md-6 col-xm-12 px-0 fondo-izq">
+            <img src="../../../assets/imagenes/userlogin.png" style="width: 80%;" class="center mt-2 mx-auto d-block">
         </div>
-        <div class="col-md-6 der cont">
-            <div class=" ">
+        <div class="col-md-6 px-0 fondo-der">
+            <div class="mx-auto">
                 <h1 class="text-center text-white font-weight-lighter">Bienvenido a Notebook</h1>
-                <form class="form">
+                <form class="form mx-auto">
                     <h1 class="text-center text-secondary font-weight-lighter">Login</h1>
                     <div class="row mb-3 text-center">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
-                                    checked>
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                    value="option1" checked>
                                 <label class="form-check-label" for="gridRadios1">
                                     Empresa
                                 </label>
@@ -21,7 +20,8 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                    value="option2">
                                 <label class="form-check-label" for="gridRadios2">
                                     Empleado
                                 </label>
@@ -38,29 +38,32 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-8">
-                            <a class="text-center d-block olvido" href="#" data-toggle="modal" data-target="#exampleModal">¿Olvido
+                            <a class="text-center d-block olvido" href="#" data-toggle="modal"
+                                data-target="#exampleModal">¿Olvido
                                 su contraseña?</a>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content p-4">
-                                        <h3 class ="text-center text-dark">Recuperar contraseña</h3>
+                                        <h3 class="text-center text-dark">Recuperar contraseña</h3>
                                         <label class="label ">Confirmar correo electronico</label>
-                                        <input type="email" class="form-control " aria-describedby="emailHelp" id="email2">
-                                        <button type="button" class="btn btn-primary mt-3" onclick="PasswordReset()">Actualizar</button>
+                                        <input type="email" class="form-control " aria-describedby="emailHelp"
+                                            id="email2">
+                                        <button type="button" class="btn btn-primary mt-3"
+                                            onclick="PasswordReset()">Actualizar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <a class="text-center d-block olvido" routerLink ="/registro">Registrarse</a>
+                            <a class="text-center d-block olvido" routerLink="/registro">Registrarse</a>
                         </div>
                     </div>
-                    <input type="button" value="Entrar" onclick="verificar()" class="btn-entrar text-center text-white border-0">
+                    <input type="button" value="Entrar" onclick="verificar()"
+                        class="btn-entrar text-center text-white border-0">
                 </form>
-              
+
             </div>
         </div>
     </main>
-    </div>
-    <br> <br> <br>
+</div>
