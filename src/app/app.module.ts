@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 //RUTAS
 import {  APP_ROUTING} from './app-routes';
 import { FooterComponent } from './components/footer/footer.component';
+import { RecuperarComponent } from './components/recuperar/recuperar.component';
 
 
 //SERVICIOS
@@ -23,7 +24,8 @@ import { FooterComponent } from './components/footer/footer.component';
     RegistroComponent,
     HomeComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RecuperarComponent
   ],
   imports: [
     BrowserModule,
