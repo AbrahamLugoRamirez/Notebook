@@ -3,12 +3,39 @@
     box-sizing: border-box;
 }
 
+
+.der{
+    float: right;   
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fondo-der{
+    background-image: url("../../../assets/imagenes/fondo4.jpg");  
+}
+.fondo-izq{
+   /* background-image: url("../../../assets/imagenes/fondo.jpg");       */
+   background: white;
+}
+
+.form {
+    margin: 30px;
+    background-color: #ffffff;  
+    opacity: 1;
+    width: 360px;
+    padding: 32px;
+   
+
+}
+
 .cont{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column; 
-    background-image: url("../../../assets/imagenes/fondo.jpg");  
+    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,7 +47,7 @@
     width: 520px;
     padding: 32px;
     border-radius: 5px;
-    box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.3);
+    
 }
 
 .form-control {
