@@ -22,6 +22,10 @@ import { environment } from '../environments/environment';
 
 //SERVICIOS
 
+import { RegisterService } from './services/register.service';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +43,9 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [
+    RegisterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
