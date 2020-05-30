@@ -14,6 +14,11 @@ import {  APP_ROUTING} from './app-routes';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecuperarComponent } from './components/recuperar/recuperar.component';
 
+//Firebase
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+
 
 //SERVICIOS
 
@@ -30,7 +35,9 @@ import { RecuperarComponent } from './components/recuperar/recuperar.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    APP_ROUTING
+    APP_ROUTING,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
