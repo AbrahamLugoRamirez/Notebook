@@ -3,10 +3,13 @@
         <div class="col-md-6 px-0 fondo-izq " >
             <div class="mx-auto d-none d-sm-none d-md-block">
                 <div class="cont animated fadeIn fast">
-                       <form class="form">
+                       <form class="form"  (ngSubmit)= "onSubmit()">
                             <h1 class="text-center text-secondary font-weight-lighter">Registro</h1>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nombre del representante" id="name">
+                                <input type="text" class="form-control" placeholder="Nombre del representante" id="nombreEmpresa" 
+                                required 
+                                name="nombreEmpresa"
+                                [(ngModel)]= "register.nombreEmpresa" >
                             </div>                    
                             <div class="form-group">
                                 <div class="row">
@@ -54,7 +57,9 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Contraseña" id="password">
                             </div>
-                            <input type="button" value="Registrarse" onclick="obtenerDatos()" class="btn-entrar text-center text-white border-0 mb-3">
+                            <div>
+                            <input type="submit" value="Registrarse"  (click)="newEmpresa()" class="btn-entrar text-center text-white border-0 mb-3">
+                            </div>
                             <a class="text-left d-block olvido" [routerLink]="[ '/login']">Iniciar sesión</a>
                         </form>
                         <br>

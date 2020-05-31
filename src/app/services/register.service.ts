@@ -9,7 +9,7 @@ import { Register } from '../models/register';
 export class RegisterService {
 
   EmpresasList: AngularFireList<any>;
-
+  selectedEmpresa: Register = new Register();
   constructor(private firebase:AngularFireDatabase){ }
 
   Agregar(empresa: Register ){
