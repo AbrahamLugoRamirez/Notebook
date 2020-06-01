@@ -1,10 +1,10 @@
 export class Register {
-$key: string;
-tipo: string;
-identificacion: number;
+nombreRepresentante: String;
+tipo: String;
+numDocumento: number;
 correo: string;
 nombreEmpresa: string;
 telefono: number;
-contraseña: string;
+clave: string;
 }
 

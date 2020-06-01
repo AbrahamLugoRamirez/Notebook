@@ -11,7 +11,7 @@
         <div class="col-md-6 px-0 fondo-der">
             <div class="mx-auto">
               
-                <form class="form mx-auto">
+                <form class="form mx-auto" >
                     <h1 class="text-center text-secondary font-weight-lighter">Login</h1>
                     <div class="row mb-3 text-center">
                         <div class="col">
@@ -35,11 +35,13 @@
                     </div>
                     <div class="form-group">
                         <label class="label">Correo electronico</label>
-                        <input type="text" class="form-control" aria-describedby="emailHelp" id="email">
+                        <input type="text" class="form-control" aria-describedby="emailHelp" 
+                        id = "correo">
                     </div>
                     <div class="form-group">
                         <label class="label">Contraseña</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" 
+                        id = "clave">
                     </div>
                     <div class="row">
                         <app-recuperar></app-recuperar>
@@ -48,8 +50,8 @@
                             <a class="text-center d-block olvido" routerLink="/registro">Registrarse</a>
                         </div>
                     </div>
-                    <input type="button" value="Entrar" onclick="verificar()"
-                        class="btn-entrar text-center text-white border-0">
+                    <input type="submit" value="Entrar"
+                        class="btn-entrar text-center text-white border-0" (click) ="verificar()">
                 </form>
 
             </div>

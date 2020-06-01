@@ -16,14 +16,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RecuperarComponent } from './components/recuperar/recuperar.component';
 
 //Firebase
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebase } from '../environments/firebase';
 
 
 //SERVICIOS
 
 import { RegisterService } from './services/register.service';
+import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.component';
 
 
 
@@ -35,14 +36,15 @@ import { RegisterService } from './services/register.service';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    RecuperarComponent
+    RecuperarComponent,
+    PanelEmpresaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     APP_ROUTING,
+    AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase),
     FormsModule
   ],
   providers: [

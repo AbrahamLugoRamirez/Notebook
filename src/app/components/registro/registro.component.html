@@ -1,27 +1,36 @@
 <div id="container" class="container-fluid com animated fadeIn fast">
     <main id="sub-container" class="row">
         <div class="col-md-6 px-0 fondo-izq " >
-            <div class="mx-auto d-none d-sm-none d-md-block">
+            <div class="mx-auto ">
                 <div class="cont animated fadeIn fast">
-                       <form class="form"  (ngSubmit)= "onSubmit()">
+                       <form class="form" #form = "ngForm" (ngSubmit)= "onSubmit(form)">
                             <h1 class="text-center text-secondary font-weight-lighter">Registro</h1>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Nombre del representante" id="nombreEmpresa" 
                                 required 
-                                name="nombreEmpresa"
-                                [(ngModel)]= "register.nombreEmpresa" >
+                                #nombreRepresentante = "ngModel"
+                                name="nombreRepresentante"
+                                [(ngModel)]= "registerService.selectedEmpresa.nombreRepresentante" >
                             </div>                    
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select class="form-control form-control-sm pt-0 pb-0" id="tipo">
+                                        <select class="form-control form-control-sm pt-0 pb-0" 
+                                        #tipo = "ngModel"
+                                        name="tipo"
+                                        [(ngModel)]= "registerService.selectedEmpresa.tipo"
+                                        >
                                             <option>Cedula</option>
                                             <option>Pasaporte</option>
                                             <option>Nit</option>
                                           </select>
                                     </div>
                                     <div class="col">
-                                        <input type="number" class="form-control" placeholder="Número de documento" id="numDocumento">
+                                        <input type="number" class="form-control" placeholder="Número de documento"
+                                        #numDocumento = "ngModel"
+                                        name="numDocumento"
+                                        [(ngModel)]= "registerService.selectedEmpresa.numDocumento"
+                                        >
                                     </div>
                                 </div>
                             </div>                    
@@ -29,7 +38,11 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="email" class="form-control" aria-describedby="emailHelp"
-                                            placeholder="Correo electronico" id="email">
+                                            placeholder="Correo electronico"
+                                            #correo = "ngModel"
+                                            name="correo"
+                                            [(ngModel)]= "registerService.selectedEmpresa.correo"    
+                                        >
                                     </div>
                     
                                     <div class="col">
@@ -46,27 +59,39 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col" name="f1" id="f1">
-                                        <input type="text" class="form-control" placeholder="Nombre de la empresa" id="nomEmpresa" name="nomEmpresa">
+                                        <input type="text" class="form-control" placeholder="Nombre de la empresa"
+                                        #nombreEmpresa = "ngModel"
+                                        name="nombreEmpresa"
+                                        [(ngModel)]= "registerService.selectedEmpresa.nombreEmpresa"  
+                                        >
                                     </div>
                                     <div class="col">
-                                        <input type="number" class="form-control" placeholder="Telefono" id="telefono">
+                                        <input type="number" class="form-control" placeholder="Telefono"
+                                        #telefono = "ngModel"
+                                        name="telefono"
+                                        [(ngModel)]= "registerService.selectedEmpresa.telefono"
+                                        >
                                     </div>
                                 </div>
                             </div>
                     
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Contraseña" id="password">
+                                <input type="password" class="form-control" placeholder="Contraseña"
+                                #clave = "ngModel"
+                                name="clave"
+                                [(ngModel)]= "registerService.selectedEmpresa.clave"
+                                >
                             </div>
                             <div>
-                            <input type="submit" value="Registrarse"  (click)="newEmpresa()" class="btn-entrar text-center text-white border-0 mb-3">
+                            <input type="submit" value="Registrarse"  class="btn-entrar text-center text-white border-0 mb-3">
                             </div>
-                            <a class="text-left d-block olvido" [routerLink]="[ '/login']">Iniciar sesión</a>
+                            <a class="text-left d-block olvido" routerLink="/login">Iniciar sesión</a>
                         </form>
                         <br>
                     </div>  
             </div>
         </div>
-        <div class="col-md-6 px-0 fondo-der der">   
+        <div class="col-md-6 px-0 fondo-der d-none d-sm-none d-md-block der">   
             <div class="mx-auto">
                 <img src="../../../assets/imagenes/logo.png"    style="width: 100%;">
             </div>
