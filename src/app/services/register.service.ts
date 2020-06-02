@@ -4,8 +4,7 @@ import { Register } from '../models/register';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
-
+import Swal  from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +16,8 @@ export class RegisterService {
   
   constructor(private firebase:AngularFireDatabase, public afAuth: AngularFireAuth){ }
   
- 
-  
   Agregar(empresa: Register ){
+    let errorCode;
     this.EmpresasList = this.firebase.list('Empresas');
     console.log(empresa.clave)
     console.log(empresa.nombreEmpresa)
@@ -36,11 +34,58 @@ export class RegisterService {
         clave: empresa.clave,
         uid: res.user.uid
       })
+      Swal.fire(
+        'Exito!',
+        'Su empresa fue registrada con exito!',
+        'success'
+      )
+
+    }, err => {
+      console.log(err);
+      errorCode = err.code;
+      console.log(errorCode)
+
+      if (errorCode == "auth/email-already-in-use") {
+        Swal.fire({
+            title: 'Espere',
+            text: "Correo electronico ya registrado",
+            icon: 'warning',
+        })
+    } else {
+        if (errorCode == "auth/invalid-email") {
+            Swal.fire({
+                title: 'Espere',
+                text: "Correo electronico incorrecto",
+                icon: 'warning',
+            })
+
+        } else {
+            if (errorCode == "auth/operation-not-allowed") {
+                Swal.fire({
+                    title: 'Espere',
+                    text: "Correo electronico inhabilitado",
+                    icon: 'warning',
+                })
+            } else {
+                if (errorCode == "auth/weak-password") {
+                    Swal.fire({
+                        title: 'Espere',
+                        text: "Contraseña no es segura",
+                        icon: 'warning',
+
+                    })
+                }
+            }
+          }
+
+        }
+
     })
    
   }
 
   doRegister(value){
+  
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.correo, value.clave)
       .then(res => {

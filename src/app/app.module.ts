@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,13 +20,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebase } from '../environments/firebase';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
-
-
 //SERVICIOS
-
 import { RegisterService } from './services/register.service';
 import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.component';
 
+//SweetAlert2
+import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -48,7 +46,8 @@ import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     FormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SweetAlert2Module
   ],
   providers: [
     RegisterService
