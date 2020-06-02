@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Register } from '../../models/register';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,6 @@ export class LoginComponent implements OnInit {
   EmpresaList: Register[];
   ngOnInit(): void {
   }
-
 
   verificar(): void {
 
@@ -47,9 +47,12 @@ export class LoginComponent implements OnInit {
         this.EmpresaList.forEach(element => {
           if (element.correo == correo && element.clave == clave) {
             contador = true;
+            localStorage.setItem('uid', element.correo );
+            
           }
         });
         if (contador) {
+          
           this._router.navigate(['/panel-empresa']);
         } else {
           alert('Usuario o contraseña incorrecta')

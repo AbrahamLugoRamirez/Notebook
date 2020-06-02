@@ -19,6 +19,8 @@ import { RecuperarComponent } from './components/recuperar/recuperar.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebase } from '../environments/firebase';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+
 
 
 //SERVICIOS
@@ -45,7 +47,8 @@ import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.
     APP_ROUTING,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
   ],
   providers: [
     RegisterService

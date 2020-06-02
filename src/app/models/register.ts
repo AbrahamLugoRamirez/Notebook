@@ -6,5 +6,6 @@ correo: string;
 nombreEmpresa: string;
 telefono: number;
 clave: string;
+uid: string;
 }
 
