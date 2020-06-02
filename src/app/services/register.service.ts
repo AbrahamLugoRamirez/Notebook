@@ -72,14 +72,11 @@ export class RegisterService {
                         title: 'Espere',
                         text: "Contraseña no es segura",
                         icon: 'warning',
-
                     })
                 }
-            }
+              }
           }
-
         }
-
     })
    
   }
@@ -90,10 +87,19 @@ export class RegisterService {
       firebase.auth().createUserWithEmailAndPassword(value.correo, value.clave)
       .then(res => {
         resolve(res);
-        
+        this.VerificarGmail();
       }, err => reject(err))
     })
   }
+
+  VerificarGmail() {
+    var user = firebase.auth().currentUser;
+    user.sendEmailVerification().then(function () {
+        // Email sent.
+    }).catch(function (error) {
+        // An error happened.
+    });
+}
   
 
 }
