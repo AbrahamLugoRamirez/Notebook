@@ -1,6 +1,6 @@
 export class Register {
-nombreRepresentante: String;
-tipo: String;
+nombreRepresentante: string;
+tipo: string;
 numDocumento: number;
 correo: string;
 nombreEmpresa: string;

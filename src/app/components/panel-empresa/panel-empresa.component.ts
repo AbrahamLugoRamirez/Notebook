@@ -17,7 +17,7 @@ export class PanelEmpresaComponent implements OnInit {
   numDocumento: number;
   correo: string;
   telefono: number; 
-  
+  tipo:string;
   constructor(private _login: LoginService, private _router: Router, public afAuth: AngularFireAuth) { 
     var user = firebase.auth().currentUser;
     if (user) {
@@ -51,10 +51,10 @@ export class PanelEmpresaComponent implements OnInit {
            this.nombreE= element.nombreEmpresa;
            this.correo = element.correo;
            this.nombreRepresentante = element.nombreRepresentante;
-           this.correo = element.correo
-           this.telefono = element.telefono
-           
-
+           this.correo = element.correo;
+           this.telefono = element.telefono;
+           this.tipo= element.tipo;
+           this.numDocumento=element.numDocumento;
           //TODO
             
           }

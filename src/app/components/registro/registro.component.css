@@ -14,6 +14,7 @@
 
 .fondo-der{
     background-image: url("../../../assets/imagenes/fondo4.jpg");  
+    background-repeat: no-repeat;
 }
 .fondo-izq{
    /* background-image: url("../../../assets/imagenes/fondo.jpg");       */
