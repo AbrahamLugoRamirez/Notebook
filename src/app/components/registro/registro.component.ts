@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class RegistroComponent implements OnInit {
 
   
-  constructor( public registerService: RegisterService) {}
+  constructor( public registerService: RegisterService, private _router: Router) {}
   
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class RegistroComponent implements OnInit {
 
   onSubmit(empresa: NgForm):void{
     this.registerService.Agregar(empresa.value);
+    this._router.navigate(['/login']);
   }
 
  

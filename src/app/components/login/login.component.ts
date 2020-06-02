@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Register } from '../../models/register';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
+import { AngularFireAuth} from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { element } from 'protractor';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _login: LoginService, private _router: Router, private elRef: ElementRef) { }
+  constructor(private _login: LoginService, private _router: Router, private elRef: ElementRef, public afAuth: AngularFireAuth) { }
 
 
   EmpresaList: Register[];
@@ -45,9 +46,10 @@ export class LoginComponent implements OnInit {
 
         let contador = false;
         this.EmpresaList.forEach(element => {
+
           if (element.correo == correo && element.clave == clave) {
             contador = true;
-            localStorage.setItem('uid', element.correo );
+            localStorage.setItem('uid', element.uid );
             
           }
         });
@@ -63,7 +65,17 @@ export class LoginComponent implements OnInit {
   getEmpleado(): void {
 
   }
-
+  Login(){  
+    let correo = this.elRef.nativeElement.querySelector('#correo').value;
+    let clave = this.elRef.nativeElement.querySelector('#clave').value;
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(correo, clave)
+      .then(res => {
+        resolve(res);
+        console.log("Winnnnn")
+      }, err => reject(err))
+    })
+  }
 
 
 }

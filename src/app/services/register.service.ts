@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Register } from '../models/register';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import Swal  from 'sweetalert2';
