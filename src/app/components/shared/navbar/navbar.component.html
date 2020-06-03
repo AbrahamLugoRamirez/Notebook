@@ -24,10 +24,9 @@
           </ul>
   
         </ul>
-      </div>
-      
-      <button routerLink="/login" class="btn btn-outline-light my-2 my-sm-0" type="submit">Iniciar
-        sesion</button>
+      </div>      
+        <button routerLink="/login" *ngIf="iniciar"  type="button" class="btn btn-light">Iniciar sesion</button>
+        <button routerLink="/home" *ngIf="cerrar" type="button" (click)="cerrarSesion()" class="btn btn-light">Cerrar sesion</button>
     </form>
   </div>
 </nav>

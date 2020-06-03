@@ -22,11 +22,10 @@ export class PanelEmpresaComponent implements OnInit {
     var user = firebase.auth().currentUser;
     if (user) {
      // User is signed in.
-     console.log(user.uid);
      this.getEmpresa();
    } else {
      // No user is signed in.     
-     this._router.navigate(['/home']);
+     console.log("no logi")
    }
   }
   EmpresaList: Register[];
@@ -46,6 +45,7 @@ export class PanelEmpresaComponent implements OnInit {
         })
         let contador = false;
         var user = firebase.auth().currentUser;
+        console.log(user.uid);
         this.EmpresaList.forEach(element => {
           if (element.uid == user.uid) {
            this.nombreE= element.nombreEmpresa;

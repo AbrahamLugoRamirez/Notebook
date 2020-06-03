@@ -12,7 +12,9 @@ import * as firebase from 'firebase/app';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _login: LoginService, private _router: Router, private elRef: ElementRef, public afAuth: AngularFireAuth) { }
+  constructor(private _login: LoginService, private _router: Router, private elRef: ElementRef, public afAuth: AngularFireAuth) {
+    localStorage.clear();   
+   }
 
 
   EmpresaList: Register[];
@@ -49,8 +51,8 @@ export class LoginComponent implements OnInit {
 
           if (element.correo == correo && element.clave == clave) {
             contador = true;
-            localStorage.setItem('uid', element.uid );
             
+            this.Login();
           }
         });
         if (contador) {
