@@ -4,6 +4,7 @@ import { Register } from '../../models/register';
 import { Router } from '@angular/router';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -51,12 +52,12 @@ export class LoginComponent implements OnInit {
 
           if (element.correo == correo && element.clave == clave) {
             contador = true;
-            
+            localStorage.setItem('uidEmpresa', element.uid);
+
             this.Login();
           }
         });
-        if (contador) {
-          
+        if (contador) {        
           this._router.navigate(['/panel-empresa']);
         } else {
           alert('Usuario o contraseña incorrecta')

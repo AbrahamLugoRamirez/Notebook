@@ -15,11 +15,12 @@ export class RegisterService {
   
   constructor(private firebase:AngularFireDatabase, public afAuth: AngularFireAuth){ }
   
-  Agregar(empresa: Register ){
+  Agregar(empresa: Register, img ){
     let errorCode;
     this.EmpresasList = this.firebase.list('Empresas');
     console.log(empresa.clave)
     console.log(empresa.nombreEmpresa)
+    empresa.img = img;
     this.doRegister(empresa) .then(res => {
       console.log(res);
       console.log(res.user.uid);
@@ -31,7 +32,8 @@ export class RegisterService {
         nombreEmpresa: empresa.nombreEmpresa,
         telefono: empresa.telefono,
         clave: empresa.clave,
-        uid: res.user.uid
+        uid: res.user.uid,
+        img: empresa.img
       })
       Swal.fire(
         'Exito!',

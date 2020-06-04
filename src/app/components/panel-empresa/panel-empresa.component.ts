@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { AngularFireAuth} from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Register } from '../../models/register';
 
@@ -16,24 +16,24 @@ export class PanelEmpresaComponent implements OnInit {
   nombreRepresentante: String;
   numDocumento: number;
   correo: string;
-  telefono: number; 
-  tipo:string;
-  constructor(private _login: LoginService, private _router: Router, public afAuth: AngularFireAuth) { 
-    var user = firebase.auth().currentUser;
-    if (user) {
-     // User is signed in.
-     this.getEmpresa();
-   } else {
-     // No user is signed in.     
-     console.log("no logi")
-   }
+  telefono: number;
+  tipo: string;
+  img: String;
+  constructor(private _login: LoginService, private _router: Router, public afAuth: AngularFireAuth, private elRef: ElementRef) {
+
   }
   EmpresaList: Register[];
-  
+
   ngOnInit(): void {
+    if (localStorage.getItem('uidEmpresa') != null) {
+      console.log(localStorage.getItem('uidEmpresa'))
+      this.getEmpresa(localStorage.getItem('uidEmpresa'));
+    } else {
+      this._router.navigate(['/login']);
+    }
   }
 
-  getEmpresa(): void {
+  getEmpresa(uidEmpresa): void {
     this._login.getEmpresas()
       .snapshotChanges()
       .subscribe(item => {
@@ -44,21 +44,20 @@ export class PanelEmpresaComponent implements OnInit {
           this.EmpresaList.push(x as Register);
         })
         let contador = false;
-        var user = firebase.auth().currentUser;
-        console.log(user.uid);
+        
         this.EmpresaList.forEach(element => {
-          if (element.uid == user.uid) {
-           this.nombreE= element.nombreEmpresa;
-           this.correo = element.correo;
-           this.nombreRepresentante = element.nombreRepresentante;
-           this.correo = element.correo;
-           this.telefono = element.telefono;
-           this.tipo= element.tipo;
-           this.numDocumento=element.numDocumento;
-          //TODO
-            
+          if (element.uid == uidEmpresa) {
+            this.elRef.nativeElement.querySelector('#imagen').src = element.img;
+            this.nombreE = element.nombreEmpresa;
+            this.correo = element.correo;
+            this.nombreRepresentante = element.nombreRepresentante;
+            this.correo = element.correo;
+            this.telefono = element.telefono;
+            this.tipo = element.tipo;
+            this.numDocumento = element.numDocumento;
+            //TODO
           }
-        });       
+        });
       })
   }
 

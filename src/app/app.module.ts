@@ -19,7 +19,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebase } from '../environments/firebase';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-
+import { AngularFireStorageModule } from 'angularfire2/storage';
 //SERVICIOS
 import { RegisterService } from './services/register.service';
 import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.component';
@@ -47,6 +47,7 @@ import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     AngularFireDatabaseModule,
     FormsModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     SweetAlert2Module
   ],
   providers: [

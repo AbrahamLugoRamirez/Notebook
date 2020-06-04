@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-recuperar',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecuperarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private elRef: ElementRef) { }
 
   ngOnInit(): void {
+    
   }
-
 }

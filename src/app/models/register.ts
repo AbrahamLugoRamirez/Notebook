@@ -7,5 +7,6 @@ nombreEmpresa: string;
 telefono: number;
 clave: string;
 uid: string;
+img: String;
 }
 

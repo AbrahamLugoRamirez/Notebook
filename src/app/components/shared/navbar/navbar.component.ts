@@ -11,10 +11,16 @@ export class NavbarComponent implements OnInit {
   iniciar:boolean;
   cerrar:boolean;
   constructor(public afAuth: AngularFireAuth){
-    this.iniciar=true;
-    this.cerrar=true;
+    
   }
   ngOnInit(): void { 
+    if(localStorage.getItem('uidEmpresa') != null){
+      this.cerrar = true;
+      this.iniciar = false;
+    }else{
+      this.cerrar = false;
+      this.iniciar = true;
+    }
   }
 
   ngDoCheck(): void{
@@ -22,11 +28,7 @@ export class NavbarComponent implements OnInit {
   }
 
  cerrarSesion():void{
-  firebase.auth().signOut().then(function() {
-    console.log("Sesion cerrada");
-  }).catch(function(error) {
-    // An error happened.
-  });
+  localStorage.clear();
  }
 
 
