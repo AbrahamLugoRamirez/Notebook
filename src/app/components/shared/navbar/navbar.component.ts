@@ -14,6 +14,10 @@ export class NavbarComponent implements OnInit {
     
   }
   ngOnInit(): void { 
+    
+  }
+
+  ngDoCheck(): void{
     if(localStorage.getItem('uidEmpresa') != null){
       this.cerrar = true;
       this.iniciar = false;
@@ -21,9 +25,6 @@ export class NavbarComponent implements OnInit {
       this.cerrar = false;
       this.iniciar = true;
     }
-  }
-
-  ngDoCheck(): void{
   
   }
 

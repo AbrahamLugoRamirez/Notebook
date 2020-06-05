@@ -9,7 +9,6 @@ import * as firebase from 'firebase/app';
 export class HomeComponent implements OnInit {
 
   constructor(public afAuth: AngularFireAuth) { 
-    localStorage.clear();
   }
 
   ngOnInit(): void {

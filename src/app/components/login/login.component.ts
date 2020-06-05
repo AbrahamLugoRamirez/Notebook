@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { element } from 'protractor';
+import  Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
       } else {
         this.getEmpleado();
       }
+    }else{
+        
     }
   }
 
@@ -60,7 +64,11 @@ export class LoginComponent implements OnInit {
         if (contador) {        
           this._router.navigate(['/panel-empresa']);
         } else {
-          alert('Usuario o contraseña incorrecta')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario o contraseña incorrecta!',
+          })
         }
       })
   }

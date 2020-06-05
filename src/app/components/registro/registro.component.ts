@@ -14,7 +14,9 @@ import { finalize } from 'rxjs/operators';
 export class RegistroComponent implements OnInit {
 
   
-  constructor( public registerService: RegisterService, private _router: Router,  private elRef: ElementRef, private storage: AngularFireStorage) {}
+  constructor( public registerService: RegisterService, private _router: Router,  private elRef: ElementRef, private storage: AngularFireStorage) {
+    localStorage.clear();
+  }
   
 
   ngOnInit(): void {
