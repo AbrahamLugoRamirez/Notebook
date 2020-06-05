@@ -4,7 +4,7 @@ import { Register } from '../models/register';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import Swal  from 'sweetalert2';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class RegisterService {
   EmpresasList: AngularFireList<any>;
   selectedEmpresa: Register = new Register();
   
-  constructor(private firebase:AngularFireDatabase, public afAuth: AngularFireAuth){ }
+  constructor(private firebase:AngularFireDatabase, public afAuth: AngularFireAuth , private _router: Router){ }
   
   Agregar(empresa: Register, img ){
     let errorCode;
@@ -40,7 +40,7 @@ export class RegisterService {
         'Su empresa fue registrada con exito!',
         'success'
       )
-
+      this._router.navigate(['/login']);
     }, err => {
       console.log(err);
       errorCode = err.code;

@@ -36,6 +36,12 @@ export class LoginComponent implements OnInit {
         this.getEmpleado();
       }
     }else{
+      Swal.fire({
+        title: 'Espere',
+        text: "Uno o mas campos vacios",
+        icon: 'warning',
+    })
+
         
     }
   }
@@ -84,6 +90,25 @@ export class LoginComponent implements OnInit {
       .then(res => {
         resolve(res);
         console.log("Winnnnn")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully'
+        })
+
+
+
       }, err => reject(err))
     })
   }
