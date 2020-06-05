@@ -26,6 +26,9 @@ import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.
 
 //SweetAlert2
 import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { RegistrarEmpleadosComponent } from './components/registrar-empleados/registrar-empleados.component';
+import { MenuVerticalComponent } from './components/menu-vertical/menu-vertical.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     NavbarComponent,
     FooterComponent,
     RecuperarComponent,
-    PanelEmpresaComponent
+    PanelEmpresaComponent,
+    EmpleadosComponent,
+    RegistrarEmpleadosComponent,
+    MenuVerticalComponent
   ],
   imports: [
     BrowserModule,

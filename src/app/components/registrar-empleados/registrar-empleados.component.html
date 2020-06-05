@@ -1,0 +1,73 @@
+<div id="container" class="container-fluid com animated fadeIn fast">
+    <main id="sub-container" class="row">
+        <div class="col-md-6 px-0 fondo-izq " >
+            <div class="mx-auto ">
+                <div class="cont animated fadeIn fast">
+                       <form class="form" #form = "ngForm" (ngSubmit)= "onSubmit(form)">
+                            <h1 class="text-center text-secondary font-weight-lighter">Registro de empleados</h1>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nombre del empleado" id="nombre" 
+                                required 
+                                #nombre = "ngModel"
+                                name="nombre"
+                                [(ngModel)]= "registerService.selectedEmpleados.nombre" >
+                            </div>                    
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Correo electronico del empleado"
+                                        #correo = "ngModel"
+                                        name="correo"
+                                        [(ngModel)]= "registerService.selectedEmpleados.correo"
+                                        >
+                                    </div>
+                                </div>
+                            </div>                    
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                                            placeholder="Direccion del empleado"
+                                            #direccion = "ngModel"
+                                            name="direccion"
+                                            [(ngModel)]= "registerService.selectedEmpleados.direccion"    
+                                        >
+                                    </div>
+                    
+                                    <div class="col">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="file"
+                                                aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                    
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="password" class="form-control" placeholder="Contraseña asignada"
+                                        #clave = "ngModel"
+                                        name="clave"
+                                        [(ngModel)]= "registerService.selectedEmpleados.clave"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                            <input type="submit" value="Registrarse"  class="btn-entrar text-center text-white border-0 mb-3">
+                            </div>                       
+                        </form>
+                        <br>
+                    </div>  
+            </div>
+        </div>
+        <div class="col-md-6 px-0 fondo-der d-none d-sm-none d-md-block der cont">   
+            <div class="mx-auto cont">
+                <img src="../../../assets/imagenes/ico.png"   >
+            </div>
+        </div>
+    </main>
+</div>

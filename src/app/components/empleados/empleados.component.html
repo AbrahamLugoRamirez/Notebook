@@ -1,0 +1,26 @@
+<div class="container main-empleados m-5">
+    <div class="card-deck">
+
+        <div class="row">
+
+            <div class="col-3 px-0" *ngFor="let empleado of EmpleadoList2">
+                <div class="card">
+                    <img src="{{empleado.img}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{empleado.nombre}}</h5>
+                        <p class="card-text">Correo electronico: {{empleado.correo}} </p>
+                        <p class="card-text">Respondio la encuesta: <span class = "text-danger">{{empleado.respondio}} </span></p>
+                        <p class="card-text">Estado: <span class = "text-success">{{empleado.estado}} </span></p>
+
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

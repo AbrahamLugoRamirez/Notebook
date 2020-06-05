@@ -1,32 +1,37 @@
-<br>
-  <section class="main container center ">
-    <h1 class="text-center text-secondary font-weight-lighter mb"> Informacion General</h1>
-    <img [src]="img" id="imagen" class="imagen-empresa" style="height: 180px; width: 180px; border-radius: 50%;">
-    <h1>{{nombreE}}</h1>
-    <h5>Numero de operadores: </h5>
-    <h5>Mail: {{correo}}</h5>   
-    <h5>Telefono: {{telefono}}</h5>
-    <h5>Tipo: {{tipo}}</h5>
-    <h5>N° identificacion: {{numDocumento}}</h5>
-    <h5>Contraseña: **********</h5>
-    <h5>{{nombreRepresentante}}</h5>
-    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-lg">Ver
-      grafica general</button>
+<div class="row">
+  <div class="col-md-8 px-0">
+    <section class="main container center ">
+      <h1 class="text-center text-secondary font-weight-lighter mb"> Informacion General</h1>
+      <img [src]="img" id="imagen" class="imagen-empresa" style="height: 180px; width: 180px; border-radius: 50%;">
+      <h1>{{nombreE}}</h1>
+      <h5>Numero de operadores: </h5>
+      <h5>Mail: {{correo}}</h5>
+      <h5>Telefono: {{telefono}}</h5>
+      <h5>Tipo: {{tipo}}</h5>
+      <h5>N° identificacion: {{numDocumento}}</h5>
+      <h5>Contraseña: ****</h5>
+      <h5>{{nombreRepresentante}}</h5>
+      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-lg">Ver
+        grafica general</button>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div id="grafG"></div>
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div id="grafG"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="spinner-grow" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+      <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
 
-  </section>
-<br>
+    </section>
 
 
+  </div>
 
+  <div class="col-md-4 px-0">
+    <app-menu-vertical></app-menu-vertical>
+  </div>
+</div>
