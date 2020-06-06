@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { LoginService } from '../../../services/login.service';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
+import { Register } from '../../../models/register';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
@@ -10,9 +10,11 @@ import * as firebase from 'firebase/app';
 export class NavbarComponent implements OnInit {
   iniciar:boolean;
   cerrar:boolean;
-  constructor(public afAuth: AngularFireAuth){
-    
-  }
+  img: String;
+  name:boolean = false;
+  nombreE: String;
+  constructor(private _login: LoginService, public afAuth: AngularFireAuth,  private elRef: ElementRef){  }
+  EmpresaList: Register[];
   ngOnInit(): void { 
     
   }
@@ -21,9 +23,15 @@ export class NavbarComponent implements OnInit {
     if(localStorage.getItem('uidEmpresa') != null){
       this.cerrar = true;
       this.iniciar = false;
+      if(name == false){
+        this.getEmpresa(localStorage.getItem('uidEmpresa'));
+        this.name = true;
+      }
+      
     }else{
       this.cerrar = false;
       this.iniciar = true;
+      this.name =false;
     }
   
   }
@@ -31,6 +39,27 @@ export class NavbarComponent implements OnInit {
  cerrarSesion():void{
   localStorage.clear();
  }
+
+ getEmpresa(uidEmpresa): void {
+  this._login.getEmpresas()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.EmpresaList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.EmpresaList.push(x as Register);
+      })        
+      this.EmpresaList.forEach(element => {
+        if (element.uid == uidEmpresa) {
+          this.elRef.nativeElement.querySelector('#imagen').src = element.img;
+          this.nombreE = element.nombreEmpresa;
+          //TODO
+        }
+      });
+    })
+}
+
 
 
 }

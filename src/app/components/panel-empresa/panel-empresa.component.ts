@@ -42,9 +42,7 @@ export class PanelEmpresaComponent implements OnInit {
           let x = element.payload.toJSON();
           x["$key"] = element.key;
           this.EmpresaList.push(x as Register);
-        })
-        let contador = false;
-        
+        })        
         this.EmpresaList.forEach(element => {
           if (element.uid == uidEmpresa) {
             this.elRef.nativeElement.querySelector('#imagen').src = element.img;
