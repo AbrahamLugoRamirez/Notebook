@@ -8,15 +8,17 @@ import { Register } from '../../../models/register';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
+  //variables
   iniciar:boolean;
   cerrar:boolean;
   img: String;
   name:boolean = false;
   nombreE: String;
-  constructor(private _login: LoginService, public afAuth: AngularFireAuth,  private elRef: ElementRef){  }
   EmpresaList: Register[];
-  ngOnInit(): void { 
-    
+
+  constructor(private _login: LoginService, public afAuth: AngularFireAuth,  private elRef: ElementRef){}
+  
+  ngOnInit(): void {     
   }
 
   ngDoCheck(): void{
@@ -26,14 +28,12 @@ export class NavbarComponent implements OnInit {
       if(name == false){
         this.getEmpresa(localStorage.getItem('uidEmpresa'));
         this.name = true;
-      }
-      
+      }      
     }else{
       this.cerrar = false;
       this.iniciar = true;
       this.name =false;
-    }
-  
+    }  
   }
 
  cerrarSesion():void{
