@@ -24,9 +24,18 @@
               <img [src]="img" id="imagen" *ngIf="name" class="imagen-empresa" style="height: 30px; width: 30px; border-radius: 50%; ">      
             </li>
             <li class="nav-item active">
-              <a class="nav-link"  *ngIf="name">{{nombreE}}</a>
+              <a class="nav-link" routerLink="/panel-empresa" *ngIf="name">{{nombreE}}</a>
             </li>
-
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/empleados" *ngIf="name">ver empleado</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/registrar-empleado" *ngIf="name">Registrar empleados</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/crear-preguntas" *ngIf="name">Preguntas</a>
+            </li>
+            
             <li class="nav-item active">
               <a class="nav-link" routerLink="/login" *ngIf="iniciar"  >Iniciar sesion</a>
             </li>
@@ -36,7 +45,7 @@
               <a class="nav-link" routerLink="/home" *ngIf="cerrar" (click)="cerrarSesion()">Cerrar sesion</a>
             </li>
           </ul>
-          
+
   
         </ul>
       </div>      

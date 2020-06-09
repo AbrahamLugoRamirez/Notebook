@@ -6,7 +6,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { PanelEmpresaComponent } from './components/panel-empresa/panel-empresa.component'
 import { RegistrarEmpleadosComponent } from './components/registrar-empleados/registrar-empleados.component'
-import { EmpleadosComponent } from './components/empleados/empleados.component'
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { PanelEmpleadoComponent } from './components/panel-empleado/panel-empleado.component';
+
 
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
   {path: 'panel-empresa', component: PanelEmpresaComponent},
   {path: 'registrar-empleado', component: RegistrarEmpleadosComponent},
   {path: 'empleados', component: EmpleadosComponent},
+  {path: 'panel-empleado', component: PanelEmpleadoComponent},
   {path: '',  redirectTo: 'home', pathMatch: 'full',}
 ];
 

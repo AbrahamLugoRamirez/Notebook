@@ -5,7 +5,8 @@ import * as firebase from 'firebase/app';
 import { Register } from '../../../models/register';
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   //variables

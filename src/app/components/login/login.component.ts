@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       if (empresa) {
         this.getEmpresa(correo, clave)
       } else {
-        this.getEmpleado();
+        this.getEmpleado(correo, clave);
       }
     }else{
       Swal.fire({
@@ -79,7 +79,40 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  getEmpleado(): void {
+  getEmpleado(correo: String, clave: String): void {
+
+    this._login.getEmpleados()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.EmpresaList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.EmpresaList.push(x as Register);
+      })
+
+      let contador = false;
+      this.EmpresaList.forEach(element => {
+
+        if (element.correo == correo && element.clave == clave) {
+          contador = true;
+          localStorage.setItem('uidEmpresa', element.uid);
+
+         this.Login();
+         console.log("Se inicio")
+        }
+      });
+      if (contador) {        
+        this._router.navigate(['/panel-empleado']);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Usuario o contraseña incorrecta!',
+        })
+      }
+    })
+
 
   }
   Login(){  
