@@ -75,23 +75,16 @@ export class PanelEmpleadoComponent implements OnInit {
         x["$key"] = element.key;
         this.EmpleadosList.push(x as Empleados);
       })
-
       let contador = false;
       this.EmpleadosList.forEach(element => {
-
         if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
           contador = true;
           this.elRef.nativeElement.querySelector('#imagen').src = element.img;
           this.nameEmpleado = element.nombre;
         }
-      });
-    
+      });    
     })
-
   }
-
-
-
 
 
 }

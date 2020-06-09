@@ -16,20 +16,31 @@ export class NavbarComponent implements OnInit {
   name:boolean = false;
   nombreE: String;
   EmpresaList: Register[];
-
+  empleado: boolean;
   constructor(private _login: LoginService, public afAuth: AngularFireAuth,  private elRef: ElementRef){}
   
   ngOnInit(): void {     
   }
 
   ngDoCheck(): void{
-    if(localStorage.getItem('uidEmpresa') != null){
-      this.cerrar = true;
-      this.iniciar = false;
+    if(localStorage.getItem('uidEmpresa') != null ){
+      if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleados') == null ){
+        this.cerrar = true;
+        this.iniciar = false;
+        this.empleado = true;
       if(name == false){
         this.getEmpresa(localStorage.getItem('uidEmpresa'));
         this.name = true;
-      }      
+      } 
+      }else{
+        if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleados') != null ){
+          this.cerrar = true;
+          this.iniciar = false;
+          this.empleado = false;
+        }
+
+
+      }           
     }else{
       this.cerrar = false;
       this.iniciar = true;
