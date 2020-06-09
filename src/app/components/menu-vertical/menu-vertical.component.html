@@ -5,42 +5,57 @@
         </div>
         <ul class="list-group list-group-flush">
         
-            <form class="form">
+            <form class="form" #form = "ngForm" (ngSubmit)= "onSubmit(form)">
                 <!--Pregunta 1-->
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Pregunta 1" id="pregunta1">
-                  </div>
+                    <input type="text" class="form-control" placeholder="Pregunta 1" id="pregunta1"
+                    required 
+                    #pregunta1 = "ngModel"
+                    name="pregunta1"
+                    [(ngModel)]= "preguntasService.selectedPreguntas.pregunta1" >
                 </div>
-            
+              </div>
                 <!--Pregunta 2-->
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Pregunta 2" id="pregunta2">
+                    <input type="text" class="form-control" placeholder="Pregunta 2" id="pregunta2"
+                    #pregunta2 = "ngModel"
+                    name="pregunta2"
+                    [(ngModel)]= "preguntasService.selectedPreguntas.pregunta2">
                   </div>
                 </div>
             
                 <!--Pregunta 3-->
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Pregunta 3" id="pregunta3">
+                    <input type="text" class="form-control" placeholder="Pregunta 3" id="pregunta3"
+                    #pregunta3 = "ngModel"
+                    name="pregunta3"
+                    [(ngModel)]= "preguntasService.selectedPreguntas.pregunta3" >
                   </div>
                 </div>
             
                 <!--Pregunta 4-->
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Pregunta 4" id="pregunta4">
+                    <input type="text" class="form-control" placeholder="Pregunta 4" id="pregunta4"
+                    #pregunta4 = "ngModel"
+                    name="pregunta4"
+                    [(ngModel)]= "preguntasService.selectedPreguntas.pregunta4" >
                   </div>
                 </div>
             
                 <!--Pregunta 5-->
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Pregunta 5" id="pregunta5">
+                    <input type="text" class="form-control" placeholder="Pregunta 5" id="pregunta5"
+                    #pregunta5 = "ngModel"
+                    name="pregunta5"
+                    [(ngModel)]= "preguntasService.selectedPreguntas.pregunta5" >
                   </div>
                 </div>
-                <input type="button" class="btn btn-primary"  value="Crear preguntas">
+                <input type="submit" class="btn btn-primary"  value="Crear preguntas">
               </form>    
        
         </ul>

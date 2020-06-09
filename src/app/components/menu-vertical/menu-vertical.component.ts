@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { finalize } from 'rxjs/operators';
+import { PreguntasService } from '../../services/preguntas.service';
 
 @Component({
   selector: 'app-menu-vertical',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuVerticalComponent implements OnInit {
 
-  constructor() { }
+  constructor(public preguntasService: PreguntasService, private elRef: ElementRef) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(pregunta: NgForm): void {
+    
+  this.preguntasService.Agregar(pregunta.value);
+
   }
 
 }
