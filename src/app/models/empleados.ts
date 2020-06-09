@@ -6,6 +6,6 @@ export class Empleados {
     estado: String;
     clave: string;
     uidEmpleado: string;
-    uidEmpresa: String;
+    uidEmpresa: string;
     img: String;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Register } from '../../models/register';
+import { Empleados } from '../../models/empleados';
+
 import { Router } from '@angular/router';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
 
 
   EmpresaList: Register[];
+  EmpleadosList: Empleados[];
   ngOnInit(): void {
   }
 
@@ -84,20 +87,20 @@ export class LoginComponent implements OnInit {
     this._login.getEmpleados()
     .snapshotChanges()
     .subscribe(item => {
-      this.EmpresaList = [];
+      this.EmpleadosList = [];
       item.forEach(element => {
         let x = element.payload.toJSON();
         x["$key"] = element.key;
-        this.EmpresaList.push(x as Register);
+        this.EmpleadosList.push(x as Empleados);
       })
 
       let contador = false;
-      this.EmpresaList.forEach(element => {
+      this.EmpleadosList.forEach(element => {
 
         if (element.correo == correo && element.clave == clave) {
           contador = true;
-          localStorage.setItem('uidEmpresa', element.uid);
-
+          localStorage.setItem('uidEmpleado', element.uidEmpleado);
+          localStorage.setItem('uidEmpresa', element.uidEmpresa);
          this.Login();
          console.log("Se inicio")
         }
