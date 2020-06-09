@@ -12,6 +12,10 @@ export class PreguntasService {
   selectedPreguntas: Preguntas = new Preguntas();
   constructor(private firebase:AngularFireDatabase) { }
 
+  getPreguntas(){
+    return this.PreguntasList = this.firebase.list('Preguntas');
+  }
+
   Agregar(preguntas: Preguntas){
     this.PreguntasList = this.firebase.list('Preguntas');
   
