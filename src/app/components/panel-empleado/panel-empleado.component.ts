@@ -23,6 +23,7 @@ export class PanelEmpleadoComponent implements OnInit {
   pregunta5: String;
   img:String;
   nameEmpleado:String;
+  correo:String;
   constructor(private _login: LoginService, public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
     this.verificar();
     this.getEmpleado();
@@ -47,7 +48,6 @@ export class PanelEmpleadoComponent implements OnInit {
           console.log(localStorage.getItem('uidEmpresa'));
           if (element.uid == localStorage.getItem('uidEmpresa')) {
             this.contador = true;
-            console.log("Si tiene preguntas");
             this.pregunta1 = element.pregunta1;
             this.pregunta2 = element.pregunta2;
             this.pregunta3 = element.pregunta3;
@@ -81,6 +81,7 @@ export class PanelEmpleadoComponent implements OnInit {
           contador = true;
           this.elRef.nativeElement.querySelector('#imagen').src = element.img;
           this.nameEmpleado = element.nombre;
+          this.correo = element.correo;
         }
       });    
     })

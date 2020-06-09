@@ -24,7 +24,10 @@
               <img [src]="img" id="imagen" *ngIf="name" class="imagen-empresa" style="height: 30px; width: 30px; border-radius: 50%; ">      
             </li>
             <li class="nav-item active">
-              <a class="nav-link" routerLink="/panel-empresa" *ngIf="name">{{nombreE}}</a>
+              <a class="nav-link" routerLink="/panel-empresa" *ngIf="name && empleado">{{nombreE}}</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/panel-empleado" *ngIf="!empleado">{{nombreE}}</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" routerLink="/empleados" *ngIf="name && empleado">Ver empleados</a>
