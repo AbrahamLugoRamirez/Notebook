@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   name:boolean = false;
   nombreE: String;
   EmpresaList: Register[];
-  empleado: boolean;
+  empleado: boolean =false;
   constructor(private _login: LoginService, public afAuth: AngularFireAuth,  private elRef: ElementRef){}
   
   ngOnInit(): void {     
@@ -24,27 +24,27 @@ export class NavbarComponent implements OnInit {
 
   ngDoCheck(): void{
     if(localStorage.getItem('uidEmpresa') != null ){
-      if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleados') == null ){
+      if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleado') == null ){
         this.cerrar = true;
         this.iniciar = false;
-        this.empleado = true;
-      if(name == false){
-        this.getEmpresa(localStorage.getItem('uidEmpresa'));
-        this.name = true;
-      } 
+        this.empleado = true;   
       }else{
-        if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleados') != null ){
+        if(localStorage.getItem('uidEmpresa') != null && localStorage.getItem('uidEmpleado') != null ){
           this.cerrar = true;
           this.iniciar = false;
           this.empleado = false;
         }
+      }  
+      if(name == false){
+        this.getEmpresa(localStorage.getItem('uidEmpresa'));
+        this.name = true;
+      }       
 
-
-      }           
     }else{
       this.cerrar = false;
       this.iniciar = true;
       this.name =false;
+      this.empleado = true;
     }  
   }
 
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit {
         let x = element.payload.toJSON();
         x["$key"] = element.key;
         this.EmpresaList.push(x as Register);
-      })        
+      });       
       this.EmpresaList.forEach(element => {
         if (element.uid == uidEmpresa) {
           this.elRef.nativeElement.querySelector('#imagen').src = element.img;
