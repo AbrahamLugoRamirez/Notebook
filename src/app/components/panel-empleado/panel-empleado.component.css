@@ -1,0 +1,28 @@
+
+.fondo-der{
+    background-image: url("../../../assets/imagenes/fondo4.jpg");  
+    background-repeat: no-repeat;
+}
+.fondo-izq{
+   /* background-image: url("../../../assets/imagenes/fondo.jpg");       */
+   background: white;
+}
+.der{
+    float: right;   
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}

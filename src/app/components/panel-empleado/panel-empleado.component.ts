@@ -4,6 +4,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { Router } from '@angular/router';
 import { PreguntasService } from '../../services/preguntas.service';
 import { Preguntas } from '../../models/preguntas';
+import { Empleados } from '../../models/empleados';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-panel-empleado',
@@ -12,14 +14,18 @@ import { Preguntas } from '../../models/preguntas';
 })
 export class PanelEmpleadoComponent implements OnInit {
   PreguntaList: Preguntas[];
+  EmpleadosList: Empleados[];
   contador: boolean;
   pregunta1: String;
   pregunta2: String;
   pregunta3: String;
   pregunta4: String;
   pregunta5: String;
-  constructor(public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
+  img:String;
+  nameEmpleado:String;
+  constructor(private _login: LoginService, public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
     this.verificar();
+    this.getEmpleado();
   }
 
   ngOnInit(): void {
@@ -27,7 +33,6 @@ export class PanelEmpleadoComponent implements OnInit {
 
   
   verificar(): void{
-
     this.preguntasService.getPreguntas()
       .snapshotChanges()
       .subscribe(item => {
@@ -37,7 +42,6 @@ export class PanelEmpleadoComponent implements OnInit {
           x["$key"] = element.key;
           this.PreguntaList.push(x as Preguntas);
         })
-
         this.contador = false;
         this.PreguntaList.forEach(element => {
           console.log(localStorage.getItem('uidEmpresa'));
@@ -57,7 +61,37 @@ export class PanelEmpleadoComponent implements OnInit {
           
         }
       })
+  }
+
+  getEmpleado(): void{
+
+    
+    this._login.getEmpleados()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.EmpleadosList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.EmpleadosList.push(x as Empleados);
+      })
+
+      let contador = false;
+      this.EmpleadosList.forEach(element => {
+
+        if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
+          contador = true;
+          this.elRef.nativeElement.querySelector('#imagen').src = element.img;
+          this.nameEmpleado = element.nombre;
+        }
+      });
+    
+    })
 
   }
+
+
+
+
 
 }
