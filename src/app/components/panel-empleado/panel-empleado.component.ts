@@ -5,7 +5,10 @@ import { Router } from '@angular/router';
 import { PreguntasService } from '../../services/preguntas.service';
 import { Preguntas } from '../../models/preguntas';
 import { Empleados } from '../../models/empleados';
+import { Respuestas} from '../../models/respuestas';
+
 import { LoginService } from '../../services/login.service';
+import { RespuestasService } from '../../services/respuestas.service';
 
 @Component({
   selector: 'app-panel-empleado',
@@ -15,6 +18,7 @@ import { LoginService } from '../../services/login.service';
 export class PanelEmpleadoComponent implements OnInit {
   PreguntaList: Preguntas[];
   EmpleadosList: Empleados[];
+  RespuestasList: Respuestas[];
   contador: boolean;
   pregunta1: String;
   pregunta2: String;
@@ -24,7 +28,7 @@ export class PanelEmpleadoComponent implements OnInit {
   img:String;
   nameEmpleado:String;
   correo:String;
-  constructor(private _login: LoginService, public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
+  constructor(private _login: LoginService, public respuestasService: RespuestasService,  public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
     this.verificar();
     this.getEmpleado();
   }
@@ -85,6 +89,11 @@ export class PanelEmpleadoComponent implements OnInit {
         }
       });    
     })
+  }
+
+
+  onSubmit(empleado: NgForm): void {
+    
   }
 
 

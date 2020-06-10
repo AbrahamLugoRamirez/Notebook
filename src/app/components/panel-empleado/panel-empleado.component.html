@@ -9,41 +9,55 @@
 
 <br><br>
     <div class="col">
-      <form >
+      <form class="form" #form = "ngForm" (ngSubmit)= "onSubmit(form)">
         <div class="form-group">
-          <label for="formGroupExampleInput">1. {{pregunta1}}</label>
-         
+          <label for="formGroupExampleInput">1. {{pregunta1}}</label>         
              <form class="pregunta ml-5">
             <div class="row">
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio"  id="gridRadios3" value="option2"
+                #respuesta1 = "ngModel"
+                name="respuesta1"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta1" >
                 <label class="form-check-label" for="gridRadios3">
                  1
                 </label>
                 </div>
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio"  id="gridRadios3" value="option2"
+                #respuesta1 = "ngModel"
+                name="respuesta1"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta1" >
                 <label class="form-check-label" for="gridRadios3">
                   2
                 </label>
                 </div>
             
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio"  id="gridRadios3" value="option2"
+                #respuesta1= "ngModel"
+                name="respuesta1"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta1" >
                 <label class="form-check-label" for="gridRadios3">
                   3
                 </label>
                 </div>
             
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio"  id="gridRadios3" value="option2"
+                #respuesta1 = "ngModel"
+                name="respuesta1"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta1" >
                 <label class="form-check-label" for="gridRadios3">
                   4
                 </label>
                 </div>
             
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio"  id="gridRadios3" value="option2"
+                #respuesta1 = "ngModel"
+                name="respuesta1"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta1" >
                 <label class="form-check-label" for="gridRadios3">
                   5
                 </label>
@@ -57,7 +71,10 @@
           <form class="pregunta ml-5">
             <div class="row">
                 <div class ="col-md-1">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
+                <input class="form-check-input" type="radio" id="gridRadios3" value="option2"
+                #respuesta2 = "ngModel"
+                name="respuesta2"
+                [(ngModel)]= "respuestasService.selectedRespuestas.respuesta2" >
                 <label class="form-check-label" for="gridRadios3">
                   1
                 </label>
