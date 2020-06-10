@@ -28,9 +28,22 @@ export class PanelEmpleadoComponent implements OnInit {
   img:String;
   nameEmpleado:String;
   correo:String;
+  respuestas:boolean = false;
+
+  respuesta1: String;
+  respuesta2: number;
+  respuesta3: number;
+  respuesta4: number;
+  respuesta5: number;
+
+
+
+
+
   constructor(private _login: LoginService, public respuestasService: RespuestasService,  public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
     this.verificar();
     this.getEmpleado();
+    this.getRespuestas();
   }
 
   ngOnInit(): void {
@@ -67,6 +80,32 @@ export class PanelEmpleadoComponent implements OnInit {
       })
   }
 
+  getRespuestas(): void{
+    
+    this.respuestasService.getRespuestas()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.RespuestasList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.RespuestasList.push(x as Respuestas);
+      })
+      
+      this.RespuestasList.forEach(element => {
+        if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {        
+          this.respuestas = true;
+          this.respuesta1 = element.respuesta1;
+          this.respuesta2 = element.respuesta2;
+          this.respuesta3 = element.respuesta3;
+          this.respuesta4 = element.respuesta4;
+          this.respuesta5 = element.respuesta5;
+
+        }
+      });    
+    })
+  }
+
   getEmpleado(): void{
 
     
@@ -92,7 +131,9 @@ export class PanelEmpleadoComponent implements OnInit {
   }
 
 
-  onSubmit(empleado: NgForm): void {
+  onSubmit(respuestas: NgForm): void {
+    console.log("locoo");
+    this.respuestasService.agregarRespuestas(respuestas.value);
     
   }
 
