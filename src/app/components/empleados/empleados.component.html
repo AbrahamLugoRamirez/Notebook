@@ -11,7 +11,7 @@
                         <p class="card-text">Correo electronico: {{empleado.correo}} </p>
                         <p class="card-text">Respondio la encuesta: <span class = "text-danger">{{empleado.respondio}} </span></p>
                         <p class="card-text">Estado: <span class = "text-success">{{empleado.estado}} </span></p>
-
+                        <button class="btn btn-primary" (click)="verRespuestas(empleado.uidEmpleado)" type="submit">Ver resultados</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>

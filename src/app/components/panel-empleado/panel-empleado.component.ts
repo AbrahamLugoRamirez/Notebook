@@ -132,10 +132,9 @@ export class PanelEmpleadoComponent implements OnInit {
 
 
   onSubmit(respuestas: NgForm): void {
-    console.log("locoo");
-    this.respuestasService.agregarRespuestas(respuestas.value);
-    
+    this.respuestasService.agregarRespuestas(respuestas.value);    
   }
+
 
 
 }
