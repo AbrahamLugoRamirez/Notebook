@@ -147,6 +147,22 @@ export class EmpleadosComponent implements OnInit {
   }
 
   bloquear(id, estado, nombre, direccion, respondio, correo, clave, uidEmpleado, uidEmpresa, img):void{
+    if(estado == "Activo"){
+      this.firebase.list('Empleados').update(id, {
+        nombre: nombre,
+        direccion: direccion,
+        respondio: respondio,
+        correo: correo,
+        estado: "Bloqueado",
+        clave: clave,
+        uidEmpleado: uidEmpleado,
+        uidEmpresa: uidEmpresa,
+        img: img
+      })
+    }
+  }
+
+  desbloquear(id, estado, nombre, direccion, respondio, correo, clave, uidEmpleado, uidEmpresa, img):void{
     if(estado == "Bloqueado"){
       this.firebase.list('Empleados').update(id, {
         nombre: nombre,
@@ -154,18 +170,6 @@ export class EmpleadosComponent implements OnInit {
         respondio: respondio,
         correo: correo,
         estado: "Activo",
-        clave: clave,
-        uidEmpleado: uidEmpleado,
-        uidEmpresa: uidEmpresa,
-        img: img
-        })
-    }else{
-      this.firebase.list('Empleados').update(id, {
-        nombre: nombre,
-        direccion: direccion,
-        respondio: respondio,
-        correo: correo,
-        estado: "Bloqueado",
         clave: clave,
         uidEmpleado: uidEmpleado,
         uidEmpresa: uidEmpresa,
