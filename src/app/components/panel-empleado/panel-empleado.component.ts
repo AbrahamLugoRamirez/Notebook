@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Router } from '@angular/router';
 import { PreguntasService } from '../../services/preguntas.service';
 import { Preguntas } from '../../models/preguntas';
 import { Empleados } from '../../models/empleados';
-import { Respuestas} from '../../models/respuestas';
+import { Respuestas } from '../../models/respuestas';
 
 import { LoginService } from '../../services/login.service';
 import { RespuestasService } from '../../services/respuestas.service';
@@ -25,10 +25,10 @@ export class PanelEmpleadoComponent implements OnInit {
   pregunta3: String;
   pregunta4: String;
   pregunta5: String;
-  img:String;
-  nameEmpleado:String;
-  correo:String;
-  respuestas:boolean = false;
+  img: String;
+  nameEmpleado: String;
+  correo: String;
+  respuestas: boolean = false;
 
   respuesta1: String;
   respuesta2: number;
@@ -40,7 +40,7 @@ export class PanelEmpleadoComponent implements OnInit {
 
 
 
-  constructor(private _login: LoginService, public respuestasService: RespuestasService,  public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) { 
+  constructor(private firebase: AngularFireDatabase, private _login: LoginService, public respuestasService: RespuestasService, public preguntasService: PreguntasService, private elRef: ElementRef, private _router: Router) {
     this.verificar();
     this.getEmpleado();
     this.getRespuestas();
@@ -49,8 +49,8 @@ export class PanelEmpleadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  verificar(): void{
+
+  verificar(): void {
     this.preguntasService.getPreguntas()
       .snapshotChanges()
       .subscribe(item => {
@@ -72,67 +72,98 @@ export class PanelEmpleadoComponent implements OnInit {
             this.pregunta5 = element.pregunta5;
           }
         });
-        if (this.contador) {        
+        if (this.contador) {
           //this._router.navigate(['/panel-empresa']);
         } else {
-          
+
         }
       })
   }
 
-  getRespuestas(): void{
-    
+  getRespuestas(): void {
+
     this.respuestasService.getRespuestas()
-    .snapshotChanges()
-    .subscribe(item => {
-      this.RespuestasList = [];
-      item.forEach(element => {
-        let x = element.payload.toJSON();
-        x["$key"] = element.key;
-        this.RespuestasList.push(x as Respuestas);
-      })
-      
-      this.RespuestasList.forEach(element => {
-        if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {        
-          this.respuestas = true;
-          this.respuesta1 = element.respuesta1;
-          this.respuesta2 = element.respuesta2;
-          this.respuesta3 = element.respuesta3;
-          this.respuesta4 = element.respuesta4;
-          this.respuesta5 = element.respuesta5;
+      .snapshotChanges()
+      .subscribe(item => {
+        this.RespuestasList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          this.RespuestasList.push(x as Respuestas);
+        })
 
-        }
-      });    
-    })
+        this.RespuestasList.forEach(element => {
+          if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
+            this.respuestas = true;
+            this.respuesta1 = element.respuesta1;
+            this.respuesta2 = element.respuesta2;
+            this.respuesta3 = element.respuesta3;
+            this.respuesta4 = element.respuesta4;
+            this.respuesta5 = element.respuesta5;
+
+          }
+        });
+      })
   }
 
-  getEmpleado(): void{
-
-    
+  getEmpleado(): void {
     this._login.getEmpleados()
-    .snapshotChanges()
-    .subscribe(item => {
-      this.EmpleadosList = [];
-      item.forEach(element => {
-        let x = element.payload.toJSON();
-        x["$key"] = element.key;
-        this.EmpleadosList.push(x as Empleados);
+      .snapshotChanges()
+      .subscribe(item => {
+        this.EmpleadosList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          this.EmpleadosList.push(x as Empleados);
+        })
+        let contador = false;
+        this.EmpleadosList.forEach(element => {
+          if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
+            contador = true;
+            this.elRef.nativeElement.querySelector('#imagen').src = element.img;
+            this.nameEmpleado = element.nombre;
+            this.correo = element.correo;
+          }
+        });
       })
-      let contador = false;
-      this.EmpleadosList.forEach(element => {
-        if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
-          contador = true;
-          this.elRef.nativeElement.querySelector('#imagen').src = element.img;
-          this.nameEmpleado = element.nombre;
-          this.correo = element.correo;
-        }
-      });    
-    })
   }
 
 
   onSubmit(respuestas: NgForm): void {
-    this.respuestasService.agregarRespuestas(respuestas.value);    
+    this.respuestasService.agregarRespuestas(respuestas.value);
+    this.actualizar();
+  }
+
+  actualizar(): void {
+    this._login.getEmpleados()
+      .snapshotChanges()
+      .subscribe(item => {
+        this.EmpleadosList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          this.EmpleadosList.push(x as Empleados);
+        })
+
+        this.EmpleadosList.forEach(element => {
+          if (element.uidEmpleado == localStorage.getItem('uidEmpleado')) {
+            console.log("Actualizar")
+            this.firebase.list('Empleados').update(element.uidEmpleado, {
+              nombre: element.nombre,
+              direccion: element.direccion,
+              respondio: "Si",
+              correo: element.correo,
+              estado: element.estado,
+              clave: element.clave,
+              uidEmpleado: element.uidEmpleado,
+              uidEmpresa: element.uidEmpresa,
+              img: element.img
+            })
+          }
+        });
+      })
+
+
   }
 
 

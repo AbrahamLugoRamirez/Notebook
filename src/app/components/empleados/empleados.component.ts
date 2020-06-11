@@ -56,6 +56,7 @@ export class EmpleadosComponent implements OnInit {
 
   obtenerEmpleados() {
     return this.EmpleadosList = this.firebase.list('Empleados')
+    
   }
 
   verRespuestas(uid: String): void{
@@ -145,5 +146,35 @@ export class EmpleadosComponent implements OnInit {
 
   }
 
-  
+  bloquear(id, estado, nombre, direccion, respondio, correo, clave, uidEmpleado, uidEmpresa, img):void{
+    if(estado == "Bloqueado"){
+      this.firebase.list('Empleados').update(id, {
+        nombre: nombre,
+        direccion: direccion,
+        respondio: respondio,
+        correo: correo,
+        estado: "Activo",
+        clave: clave,
+        uidEmpleado: uidEmpleado,
+        uidEmpresa: uidEmpresa,
+        img: img
+        })
+    }else{
+      this.firebase.list('Empleados').update(id, {
+        nombre: nombre,
+        direccion: direccion,
+        respondio: respondio,
+        correo: correo,
+        estado: "Bloqueado",
+        clave: clave,
+        uidEmpleado: uidEmpleado,
+        uidEmpresa: uidEmpresa,
+        img: img
+        })
+    }
+  }
+
+  eliminar(id): void{
+    this.firebase.list('Empleados').remove(id);
+  }
 }
